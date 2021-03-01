@@ -32,3 +32,7 @@ use App\Http\Controllers\PostController;
 //}));
 
 Route::get('/post/{id}', [PostController::class, 'index']);
+
+Route::get('/contact', [PostController::class, 'contact']);
+
+Route::get('/post/{id}', [PostController::class, 'show_post']);
