@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,20 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return "Hello! You!";
-});
+//Route::get('/', function () {
+//    return "Hello! You!";
+//});
+//
+//Route::get('/contact', function () {
+//    return "Hi I am contact!";
+//});
+//
+//Route::get('/post/{id}/{name}', function ($id, $name) {
+//   return "This is post number ". $id . " ". $name;
+//});
+//
+//Route::get("admin/posts/example", array("as" =>"admin.home",function () {
+//    $url = route('admin.home');
+//
+//    return "This url is ". $url;
+//}));
 
-Route::get('/contact', function () {
-    return "Hi I am contact!";
-});
-
-Route::get('/post/{id}/{name}', function ($id, $name) {
-   return "This is post number ". $id . " ". $name;
-});
-
-Route::get("admin/posts/example", array("as" =>"admin.home",function () {
-    $url = route('admin.home');
-
-    return "This url is ". $url;
-}));
+Route::get('/post/{id}', [PostController::class, 'index']);
