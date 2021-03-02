@@ -31,8 +31,33 @@ use App\Http\Controllers\PostController;
 //    return "This url is ". $url;
 //}));
 
-Route::get('/post/{id}', [PostController::class, 'index']);
+//Route::get('/post/{id}', [PostController::class, 'index']);
+//
+//Route::get('/contact', [PostController::class, 'contact']);
+//
+//Route::get('/post/{id}', [PostController::class, 'show_post']);
 
-Route::get('/contact', [PostController::class, 'contact']);
+Route::get('/insert', function (){
+   DB::insert('insert into posts(title,content) values(?,?)', ['PHP with Laravel', 'Laravel is the best thing that has happend to PHP']);
+});
 
-Route::get('/post/{id}', [PostController::class, 'show_post']);
+Route::get('/read', function (){
+    $result = DB::select('select * from posts where id = ?', [1]);
+
+    foreach ($result as $post) {
+        return $post->title;
+    }
+});
+
+
+Route::get('/update', function (){
+    $updated = DB::update('update posts set title = "Update title" where id = ?', [1]);
+
+    return $updated;
+});
+
+Route::get('/delete', function (){
+    $updated = DB::update('delete from posts where id = ?', [1]);
+
+    return $updated;
+});
